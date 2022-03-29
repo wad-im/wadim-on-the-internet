@@ -36,7 +36,7 @@ const BlogpostsList = ()=>{
                         <MDXRenderer>
                             {blogpost.body}
                         </MDXRenderer>
-                        <Link to={blogpost.slug}>Vist it here</Link>
+                        <Link to={blogpost.frontmatter.slug}>Vist it here</Link>
                     </Blogpost>
                 ))
             }
