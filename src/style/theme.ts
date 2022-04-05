@@ -1,11 +1,12 @@
 const theme = {
     color: {
-      text: '#44403C', // stone 700 from tailwind
+      text: '#404040', // neutral 700 from tailwind
       background: {
-        main: '#FAFAF9', //stone 50 from tailwind
-        dark: '#F5F5F4', //stone 100 from tailwind
-        darker: '#E7E5E4' //stone 200 from tailwind
-      }
+        main: '#FAFAFA', // neutral 50 from tailwind
+        dark: '#F5F5F5', //neutral 100 from tailwind
+        darker: '#E5E5E5' //neutral 200 from tailwind
+      },
+      primary: '#0284C7',
     },
     text: {
       xs: '0.75rem',

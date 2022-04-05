@@ -4,7 +4,7 @@ import styled from "styled-components";
 const Footer = ()=>{
     return (
         <StyledFooter>
-            I am the footer
+           &#169; { new Date().getFullYear().toString()} 
         </StyledFooter>
     )
 }

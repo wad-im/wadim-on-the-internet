@@ -12,8 +12,14 @@ const Blogpost = ({data}) => {
     return (
         <Layout>
             <Container>
-                <p className='created-at'>{data.mdx.frontmatter.date}</p>
-                <h1 className='title'>{data.mdx.frontmatter.title}</h1>
+                <div className="hero">
+                    <GatsbyImage image={image} alt={data.mdx.frontmatter.hero_image_alt}/>
+                    <div className="title">
+                        <p className='created-at'>{data.mdx.frontmatter.date}</p>
+                        <h1 className='blog-title'>{data.mdx.frontmatter.title}</h1>
+                    </div>
+                </div>
+                
                 <div className='text-body'>
                     <MDXRenderer>
                             {data.mdx.body}
@@ -52,10 +58,23 @@ export const query = graphql`
 
 const Container = styled.article`
     display: grid;
-    grid-template-columns: auto 45rem auto;
-    grid-column-gap: 1rem;
+    grid-template-columns: 1fr 45rem 1fr;
     }
-    .title, .created-at, .text-body {
+    .hero {
+        grid-column: 1 / span 3;
+        display: flex;
+        margin-bottom: 4rem;
+        background-color: ${({theme})=> theme.color.background.dark};
+        .title {
+            margin-left: 2rem;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-width: 33%;
+        }
+    }
+    .text-body {
         grid-column: 2 / span 1;
     }
     

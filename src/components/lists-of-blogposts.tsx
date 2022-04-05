@@ -1,7 +1,6 @@
 import { graphql, Link, useStaticQuery } from 'gatsby'
 import React from 'react'
 import styled from 'styled-components'
-import { MDXRenderer } from 'gatsby-plugin-mdx'
 import BlogpostCard from './blogpost-card'
 
 const BlogpostsList = ()=>{

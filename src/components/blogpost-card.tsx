@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 
 
-interface BlogpostCardProps {
+export interface BlogpostCardProps {
     title: string,
     author: string,
     date: string,

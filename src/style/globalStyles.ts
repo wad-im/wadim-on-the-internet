@@ -20,7 +20,7 @@ const GlobalStyle = createGlobalStyle`
     body, html {
         font-family: "Public Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
         color: ${({theme}) => theme.color.text};
-        background-color: ${({theme}) => theme.color.background};
+        background-color: ${({theme}) => theme.color.background.main};
         font-size: ${({theme}) => theme.text.base};
     }
     p, ul, ol {
