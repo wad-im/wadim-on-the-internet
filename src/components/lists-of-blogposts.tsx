@@ -2,6 +2,7 @@ import { graphql, Link, useStaticQuery } from 'gatsby'
 import React from 'react'
 import styled from 'styled-components'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
+import BlogpostCard from './blogpost-card'
 
 const BlogpostsList = ()=>{
 
@@ -11,13 +12,24 @@ const BlogpostsList = ()=>{
                 nodes {
                   frontmatter {
                     author
-                    created_at
+                    date (formatString: "DD MMMM YYYY")
                     slug
                     title
+                    hero_image {
+                        childImageSharp {
+                          gatsbyImageData (
+                            width: 320
+                            placeholder: BLURRED
+                            formats: [AUTO, WEBP, AVIF]
+                            aspectRatio: 1.3333333
+                          )
+                        }
+                      }
+                      hero_image_alt
+                      hero_image_credit_text
                   }
                   body
                   id
-                  slug
                 }
               }
         }
@@ -26,26 +38,31 @@ const BlogpostsList = ()=>{
     const blogposts = data.allMdx.nodes
 
     return (
-        <React.Fragment>
+        <Grid>
             {
                 blogposts.map((blogpost):any => (
-                    <Blogpost key={blogpost.id}>
-                        <p>{blogpost.frontmatter.title}</p>
-                        <p>written by {blogpost.frontmatter.author}</p>
-                        <p>posted on {blogpost.frontmatter.created_at}</p>
-                        <MDXRenderer>
-                            {blogpost.body}
-                        </MDXRenderer>
-                        <Link to={blogpost.frontmatter.slug}>Vist it here</Link>
-                    </Blogpost>
+                    <BlogpostCard 
+                        key={blogpost.id}
+                        title={blogpost.frontmatter.title}
+                        author={blogpost.frontmatter.author}
+                        date={blogpost.frontmatter.date}
+                        slug={blogpost.frontmatter.slug}
+                        hero_image={blogpost.frontmatter.hero_image}
+                        image_alt={blogpost.frontmatter.hero_image_alt}
+                    />
                 ))
             }
-        </React.Fragment>
+        </Grid>
     )
 }
 
 export default BlogpostsList
 
-const Blogpost = styled.article`
-    padding: 1rem 0;
+//styled-components
+const Grid = styled.section`
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 2rem;
+    grid-row-gap: 2rem;
+
 `

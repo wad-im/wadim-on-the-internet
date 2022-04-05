@@ -4,8 +4,7 @@ import styled from "styled-components";
 const Header = ()=>{
     return (
         <StyledHeader>
-            <h1>wadim on the internet</h1>
-            <p>Hi, I am Wadim and this will be my personal blog.</p>
+            <h1>wadim baslow</h1>
         </StyledHeader>
     )
 }
