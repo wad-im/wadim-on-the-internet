@@ -8,7 +8,7 @@ const BlogpostsList = ()=>{
 
     const data = useStaticQuery(graphql`
         query Blogposts {
-            allMdx {
+            allMdx (sort: {fields: frontmatter___date, order: DESC}) {
                 nodes {
                   frontmatter {
                     author
