@@ -11,6 +11,7 @@ export interface IBlogpostFrontmatter {
     author: string,
     date: string,
     slug: string,
+    description?: string,
     hero_image: any,
     hero_image_alt: string
 }

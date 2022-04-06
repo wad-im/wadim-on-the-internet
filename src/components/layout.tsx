@@ -2,12 +2,16 @@ import React from "react";
 import styled from "styled-components";
 import Footer from "./footer";
 import Header from "./header";
-import Seo from "./seo";
+import Seo, { SeoProps } from "./seo";
 
-const Layout = ({children}: any)=>{
+interface LayoutProps extends SeoProps {
+    children: any
+}
+
+const Layout = ({children, title, description}: LayoutProps)=>{
     return (
         <LayoutContainer>
-            <Seo/>
+            <Seo title={title} description={description}/>
             <Header/>
             <main>
                 {children}

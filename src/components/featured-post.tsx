@@ -1,19 +1,34 @@
 import React from 'react'
 import { Link } from "gatsby";
 import styled from "styled-components";
-import { BlogpostCardProps } from './blogpost-card';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
+import { IBlogpostFrontmatter } from '../types/blogpost.types';
+import { BlogPostCardProps } from './blogpost-card';
 
 
-const FeaturedPost = ({title, date, slug, hero_image, image_alt, excerpt, timeToRead}: BlogpostCardProps)=>{
+const FeaturedPost = ({data}: BlogPostCardProps)=>{
 
-    const image= getImage(hero_image)
+    const {
+        frontmatter,
+        excerpt,
+        timeToRead
+    } = data
+
+    const {
+        title,
+        date,
+        slug,
+        hero_image,
+        hero_image_alt
+    } = frontmatter
+
+    const image= hero_image && getImage(hero_image)
 
     return (
         <LargeCard to={slug}>
             <GatsbyImage
                 image={image}
-                alt={image_alt}
+                alt={hero_image_alt}
             />
             <div className="details">
                 <p className='created-at'> {date} &#8226; {timeToRead} min.</p>

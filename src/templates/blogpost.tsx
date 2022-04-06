@@ -10,23 +10,35 @@ interface IBlogPostProps {data: {mdx: IBlogpost}}
 
 const Blogpost = ({data}: IBlogPostProps) => {
 
-    const hero_image = data.mdx.frontmatter.hero_image
-    const image = hero_image && getImage(data.mdx.frontmatter.hero_image)
+    const {
+        frontmatter,
+        body
+    } = data.mdx
+
+    const {
+        hero_image,
+        hero_image_alt,
+        title,
+        description,
+        date
+    } = frontmatter
+
+    const image = hero_image && getImage(hero_image)
 
     return (
-        <Layout>
+        <Layout title={title} description={description}>
             <Container>
                 <div className="hero">
-                    <GatsbyImage image={image} alt={data.mdx.frontmatter.hero_image_alt}/>
+                    <GatsbyImage image={image} alt={hero_image_alt}/>
                     <div className="title">
-                        <p className='created-at'>{data.mdx.frontmatter.date}</p>
-                        <h1 className='blog-title'>{data.mdx.frontmatter.title}</h1>
+                        <p className='created-at'>{date}</p>
+                        <h1 className='blog-title'>{title}</h1>
                     </div>
                 </div>
                 
                 <div className='text-body'>
                     <MDXRenderer>
-                            {data.mdx.body}
+                            {body}
                     </MDXRenderer>
                 </div>
             </Container>
@@ -41,6 +53,7 @@ export const query = graphql`
         mdx(id: {eq: $id}) {
         frontmatter {
             title
+            description
             date (formatString: "DD MMMM YYYY")
             hero_image {
                 childImageSharp {

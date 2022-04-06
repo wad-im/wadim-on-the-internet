@@ -2,9 +2,10 @@ import type { GatsbyConfig } from "gatsby";
 
 const config: GatsbyConfig = {
   siteMetadata: {
-    title: `wadim on the internet`,
-    siteUrl: `https://www.yourdomain.tld`,
-    description: `Wadim's blog`
+    title: `wadim baslow`,
+    siteUrl: `https://wadimbaslow.com`,
+    description: `Wadim's blog`,
+    author: `Wadim Baslow`
   },
   plugins: [
     "gatsby-plugin-styled-components",

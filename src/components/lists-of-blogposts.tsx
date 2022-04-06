@@ -1,7 +1,7 @@
-import { graphql, Link, useStaticQuery } from 'gatsby'
-import { IGatsbyImageData } from 'gatsby-plugin-image'
+import { useStaticQuery } from 'gatsby'
 import React from 'react'
 import styled from 'styled-components'
+import { allBlogposts } from '../data/allBlogposts'
 import { IBlogpost } from '../types/blogpost.types'
 import BlogpostCard from './blogpost-card'
 import FeaturedPost from './featured-post'
@@ -9,65 +9,15 @@ import FeaturedPost from './featured-post'
 
 const BlogpostsList = ()=>{
 
-    const data = useStaticQuery(graphql`
-        query Blogposts {
-            allMdx (sort: {fields: frontmatter___date, order: DESC}) {
-                nodes {
-                  frontmatter {
-                    author
-                    date (formatString: "DD MMMM YYYY")
-                    slug
-                    title
-                    hero_image {
-                        childImageSharp {
-                          gatsbyImageData (
-                            width: 624
-                            placeholder: BLURRED
-                            formats: [AUTO, WEBP, AVIF]
-                            aspectRatio: 1.3333333
-                            quality: 80
-                          )
-                        }
-                      }
-                      hero_image_alt
-                  }
-                  excerpt
-                  id
-                  timeToRead
-                }
-              }
-        }
-    `)
+    const data = useStaticQuery(allBlogposts)
 
     const blogposts:IBlogpost[] = data.allMdx.nodes.slice(1)
-    let featuredPost = data.allMdx.nodes.slice(0,1)
+    let featuredPost = data.allMdx.nodes[0]
 
     return (
         <Grid>
-            <FeaturedPost 
-                title={featuredPost[0].frontmatter.title}
-                author={featuredPost[0].frontmatter.author}
-                date={featuredPost[0].frontmatter.date}
-                slug={featuredPost[0].frontmatter.slug}
-                hero_image={featuredPost[0].frontmatter.hero_image}
-                image_alt={featuredPost[0].frontmatter.hero_image_alt}
-                excerpt={featuredPost[0].excerpt}
-                timeToRead={featuredPost[0].timeToRead}
-            />
-            {
-                blogposts.map((blogpost) => (
-                    <BlogpostCard 
-                        key={blogpost.id}
-                        title={blogpost.frontmatter.title}
-                        author={blogpost.frontmatter.author}
-                        date={blogpost.frontmatter.date}
-                        slug={blogpost.frontmatter.slug}
-                        hero_image={blogpost.frontmatter.hero_image}
-                        hero_image_alt={blogpost.frontmatter.hero_image_alt}
-                        timeToRead={blogpost.timeToRead}
-                    />
-                ))
-            }
+            <FeaturedPost data={featuredPost} />
+            {blogposts.map((blogpost) => (<BlogpostCard key={blogpost.id} data={blogpost} />))}
         </Grid>
     )
 }

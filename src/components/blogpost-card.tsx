@@ -5,13 +5,33 @@ import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { IBlogpostFrontmatter } from '../types/blogpost.types'
 
 
-interface BlogPostCardProps extends IBlogpostFrontmatter {
-    timeToRead: number
+export interface BlogPostCardProps {
+    data: {
+        frontmatter: IBlogpostFrontmatter,
+        timeToRead: number,
+        excerpt?: string,
+    }
+    
 }
 
-const BlogpostCard = ({title, date, slug, hero_image, hero_image_alt, timeToRead}: BlogPostCardProps)=>{
+const BlogpostCard = ({data}: BlogPostCardProps)=>{
 
-    const image = hero_image && getImage(hero_image)
+    const {
+        frontmatter,
+        excerpt,
+        timeToRead
+    } = data
+
+    const {
+        title,
+        date,
+        slug,
+        hero_image,
+        hero_image_alt
+    } = frontmatter
+
+    const image= hero_image && getImage(hero_image)
+
 
     return (
         <Card to={slug}>
