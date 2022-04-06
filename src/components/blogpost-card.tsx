@@ -10,11 +10,12 @@ export interface BlogpostCardProps {
     date: string,
     slug: string,
     hero_image: any,
-    image_alt: string
+    image_alt: string,
+    excerpt: string
 
 }
 
-const BlogpostCard = ({title, author, date, slug, hero_image, image_alt}: BlogpostCardProps)=>{
+const BlogpostCard = ({title, author, date, slug, hero_image, image_alt, excerpt}: BlogpostCardProps)=>{
 
     const image= getImage(hero_image)
 
@@ -33,6 +34,7 @@ const BlogpostCard = ({title, author, date, slug, hero_image, image_alt}: Blogpo
 export default BlogpostCard
 
 const Card = styled(Link)`
+    grid-column: span 1;
     padding: 1rem 0;
     text-decoration: none;
     .image-placeholder {

@@ -7,7 +7,7 @@ module.exports.createPages = async ({graphql, actions}) => {
     // get the blogpost slug & id
     const response = await graphql(`
     query Blogposts {
-        allMdx {
+        allMdx (sort: {fields: frontmatter___date, order: DESC}) {
           nodes {
             frontmatter {
               slug

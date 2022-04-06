@@ -1,5 +1,5 @@
 import { graphql } from 'gatsby'
-import { GatsbyImage, getImage } from 'gatsby-plugin-image'
+import { GatsbyImage, getImage,  GatsbyImageProps } from 'gatsby-plugin-image'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import React from 'react'
 import styled from 'styled-components'
@@ -77,6 +77,24 @@ const Container = styled.article`
     .text-body {
         grid-column: 2 / span 1;
     }
-    
+    @media screen and (max-width: 55rem){
+        grid-template-columns: 1fr;
+        .hero {
+            grid-column: span 1;
+            flex-direction: column;
+            margin-bottom: 0rem;
+            
+            background-color: ${({theme})=> theme.color.background.main};
+            .title {
+                margin-left: 0;
+                padding-left: 0.5rem;
+                padding-bottom: 0;
+            }
+        }
+        .text-body {
+            grid-column: 1 / span 1;
+            padding: 0 0.5rem;
+        }
+    }
     
 `

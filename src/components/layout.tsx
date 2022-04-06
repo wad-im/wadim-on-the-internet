@@ -27,5 +27,8 @@ const LayoutContainer = styled.div`
     padding: 0 2rem;
     display: grid;
     grid-template-rows: auto 1fr auto;
+    @media screen and (max-width: 40rem){
+        padding: 0 1rem;
+    }
 `
 
