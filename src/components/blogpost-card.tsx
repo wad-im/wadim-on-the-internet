@@ -2,29 +2,22 @@ import { Link } from 'gatsby'
 import React from 'react'
 import styled from 'styled-components'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
+import { IBlogpostFrontmatter } from '../types/blogpost.types'
 
 
-export interface BlogpostCardProps {
-    title: string,
-    author: string,
-    date: string,
-    slug: string,
-    hero_image: any,
-    image_alt: string,
-    excerpt?: string,
+interface BlogPostCardProps extends IBlogpostFrontmatter {
     timeToRead: number
-
 }
 
-const BlogpostCard = ({title, date, slug, hero_image, image_alt, timeToRead}: BlogpostCardProps)=>{
+const BlogpostCard = ({title, date, slug, hero_image, hero_image_alt, timeToRead}: BlogPostCardProps)=>{
 
-    const image= getImage(hero_image)
+    const image = hero_image && getImage(hero_image)
 
     return (
         <Card to={slug}>
             <GatsbyImage
                 image={image}
-                alt={image_alt}
+                alt={hero_image_alt}
             />
             <p className='created-at'> {date} &#8226; {timeToRead} min.</p>
             <h2 className='title'>{title}</h2>

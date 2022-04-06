@@ -4,10 +4,14 @@ import { MDXRenderer } from 'gatsby-plugin-mdx'
 import React from 'react'
 import styled from 'styled-components'
 import Layout from '../components/layout'
+import { IBlogpost, IBlogpostFrontmatter } from '../types/blogpost.types'
 
-const Blogpost = ({data}) => {
+interface IBlogPostProps {data: {mdx: IBlogpost}}
 
-    const image = getImage(data.mdx.frontmatter.hero_image)
+const Blogpost = ({data}: IBlogPostProps) => {
+
+    const hero_image = data.mdx.frontmatter.hero_image
+    const image = hero_image && getImage(data.mdx.frontmatter.hero_image)
 
     return (
         <Layout>

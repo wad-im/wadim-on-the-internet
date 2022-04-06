@@ -4,6 +4,7 @@ const config: GatsbyConfig = {
   siteMetadata: {
     title: `wadim on the internet`,
     siteUrl: `https://www.yourdomain.tld`,
+    description: `Wadim's blog`
   },
   plugins: [
     "gatsby-plugin-styled-components",

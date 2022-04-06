@@ -1,8 +1,11 @@
 import { graphql, Link, useStaticQuery } from 'gatsby'
+import { IGatsbyImageData } from 'gatsby-plugin-image'
 import React from 'react'
 import styled from 'styled-components'
+import { IBlogpost } from '../types/blogpost.types'
 import BlogpostCard from './blogpost-card'
 import FeaturedPost from './featured-post'
+
 
 const BlogpostsList = ()=>{
 
@@ -27,10 +30,8 @@ const BlogpostsList = ()=>{
                         }
                       }
                       hero_image_alt
-                      hero_image_credit_text
                   }
                   excerpt
-                  body
                   id
                   timeToRead
                 }
@@ -38,7 +39,7 @@ const BlogpostsList = ()=>{
         }
     `)
 
-    const blogposts = data.allMdx.nodes.slice(1)
+    const blogposts:IBlogpost[] = data.allMdx.nodes.slice(1)
     let featuredPost = data.allMdx.nodes.slice(0,1)
 
     return (
@@ -54,7 +55,7 @@ const BlogpostsList = ()=>{
                 timeToRead={featuredPost[0].timeToRead}
             />
             {
-                blogposts.map((blogpost):any => (
+                blogposts.map((blogpost) => (
                     <BlogpostCard 
                         key={blogpost.id}
                         title={blogpost.frontmatter.title}
@@ -62,8 +63,7 @@ const BlogpostsList = ()=>{
                         date={blogpost.frontmatter.date}
                         slug={blogpost.frontmatter.slug}
                         hero_image={blogpost.frontmatter.hero_image}
-                        image_alt={blogpost.frontmatter.hero_image_alt}
-                        excerpt={blogpost.excerpt}
+                        hero_image_alt={blogpost.frontmatter.hero_image_alt}
                         timeToRead={blogpost.timeToRead}
                     />
                 ))
