@@ -32,6 +32,7 @@ const BlogpostsList = ()=>{
                   excerpt
                   body
                   id
+                  timeToRead
                 }
               }
         }
@@ -50,6 +51,7 @@ const BlogpostsList = ()=>{
                 hero_image={featuredPost[0].frontmatter.hero_image}
                 image_alt={featuredPost[0].frontmatter.hero_image_alt}
                 excerpt={featuredPost[0].excerpt}
+                timeToRead={featuredPost[0].timeToRead}
             />
             {
                 blogposts.map((blogpost):any => (
@@ -62,6 +64,7 @@ const BlogpostsList = ()=>{
                         hero_image={blogpost.frontmatter.hero_image}
                         image_alt={blogpost.frontmatter.hero_image_alt}
                         excerpt={blogpost.excerpt}
+                        timeToRead={blogpost.timeToRead}
                     />
                 ))
             }

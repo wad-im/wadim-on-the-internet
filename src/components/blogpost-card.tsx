@@ -11,11 +11,12 @@ export interface BlogpostCardProps {
     slug: string,
     hero_image: any,
     image_alt: string,
-    excerpt: string
+    excerpt?: string,
+    timeToRead: number
 
 }
 
-const BlogpostCard = ({title, author, date, slug, hero_image, image_alt, excerpt}: BlogpostCardProps)=>{
+const BlogpostCard = ({title, date, slug, hero_image, image_alt, timeToRead}: BlogpostCardProps)=>{
 
     const image= getImage(hero_image)
 
@@ -25,7 +26,7 @@ const BlogpostCard = ({title, author, date, slug, hero_image, image_alt, excerpt
                 image={image}
                 alt={image_alt}
             />
-            <p className='created-at'> {date}</p>
+            <p className='created-at'> {date} &#8226; {timeToRead} min.</p>
             <h2 className='title'>{title}</h2>
         </Card>
     )
@@ -46,5 +47,11 @@ const Card = styled(Link)`
     }
     .created-at {
         margin: 2rem 0 1rem 0;
+    }
+    @media screen and (min-width: 40rem){
+        transition: color 0.3s ease;
+        :hover {
+            color: ${({theme}) => theme.color.primary};
+        }
     }
 `

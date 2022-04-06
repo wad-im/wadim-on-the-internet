@@ -57,7 +57,6 @@ const GlobalStyle = createGlobalStyle`
     }
     a {
         color: ${({theme}) => theme.color.text};
-        text-decoration: underline;
     }
 `
 

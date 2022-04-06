@@ -1,5 +1,5 @@
 import { graphql } from 'gatsby'
-import { GatsbyImage, getImage,  GatsbyImageProps } from 'gatsby-plugin-image'
+import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import React from 'react'
 import styled from 'styled-components'
@@ -41,7 +41,7 @@ export const query = graphql`
             hero_image {
                 childImageSharp {
                   gatsbyImageData (
-                    width: 1024
+                    width: 816
                     placeholder: BLURRED
                     formats: [AUTO, WEBP, AVIF]
                   )
@@ -76,6 +76,13 @@ const Container = styled.article`
     }
     .text-body {
         grid-column: 2 / span 1;
+        a {
+            transition: color 0.3s ease;
+            text-decoration: underline;
+            :hover {
+                color:${({theme})=> theme.color.primary};
+            }
+        }
     }
     @media screen and (max-width: 55rem){
         grid-template-columns: 1fr;
