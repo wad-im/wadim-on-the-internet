@@ -3,7 +3,7 @@ import type { GatsbyConfig } from "gatsby";
 const config: GatsbyConfig = {
   siteMetadata: {
     title: `wadim baslow`,
-    siteUrl: `https://wadimbaslow.com`,
+    siteUrl: `https://wadimbaslow.gatsbyjs.io/`,
     description: `Wadim's blog`,
     author: `Wadim Baslow`
   },
@@ -37,6 +37,7 @@ const config: GatsbyConfig = {
       },
     },
   ],
+  trailingSlash: "always",
 };
 
 export default config;

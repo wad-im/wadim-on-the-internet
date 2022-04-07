@@ -1,7 +1,6 @@
-import { useStaticQuery } from 'gatsby'
+import { useStaticQuery, graphql } from 'gatsby'
 import React from 'react'
 import styled from 'styled-components'
-import { allBlogposts } from '../data/allBlogposts'
 import { IBlogpost } from '../types/blogpost.types'
 import BlogpostCard from './blogpost-card'
 import FeaturedPost from './featured-post'
@@ -35,5 +34,37 @@ const Grid = styled.section`
     }
     @media screen and (max-width: 37rem){
         grid-template-columns: minmax(0, 1fr);
+    }
+`
+
+// data
+
+const allBlogposts = graphql`
+    query Blogposts {
+        allMdx (sort: {fields: frontmatter___date, order: DESC}) {
+            nodes {
+            frontmatter {
+                author
+                date (formatString: "DD MMMM YYYY")
+                slug
+                title
+                hero_image {
+                    childImageSharp {
+                    gatsbyImageData (
+                        width: 624
+                        placeholder: BLURRED
+                        formats: [AUTO, WEBP, AVIF]
+                        aspectRatio: 1.3333333
+                        quality: 80
+                    )
+                    }
+                }
+                hero_image_alt
+            }
+            excerpt
+            id
+            timeToRead
+            }
+        }
     }
 `
