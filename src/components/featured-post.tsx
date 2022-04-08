@@ -11,18 +11,19 @@ const FeaturedPost = ({data}: BlogPostCardProps)=>{
     const {
         frontmatter,
         excerpt,
-        timeToRead
+        timeToRead,
+        remoteHeroImage
     } = data
 
     const {
         title,
         date,
         slug,
-        heroImage,
+        localHeroImage,
         heroImageAlt
     } = frontmatter
 
-    const image= heroImage && getImage(heroImage)
+    const image= remoteHeroImage && getImage(remoteHeroImage)
 
     return (
         <LargeCard to={slug}>

@@ -10,6 +10,7 @@ export interface BlogPostCardProps {
         frontmatter: IBlogpostFrontmatter,
         timeToRead: number,
         excerpt?: string,
+        remoteHeroImage: any
     }
     
 }
@@ -18,19 +19,21 @@ const BlogpostCard = ({data}: BlogPostCardProps)=>{
 
     const {
         frontmatter,
-        excerpt,
-        timeToRead
+        timeToRead,
+        remoteHeroImage
     } = data
 
     const {
         title,
         date,
         slug,
-        heroImage,
+        localHeroImage,
         heroImageAlt
     } = frontmatter
 
-    const image= heroImage && getImage(heroImage)
+    const image= remoteHeroImage && getImage(remoteHeroImage)
+
+    console.log(image)
 
 
     return (

@@ -28,3 +28,62 @@ module.exports.createPages = async ({graphql, actions}) => {
         })
     })
 }
+
+exports.createSchemaCustomization = ({ actions }) => {
+  const { createTypes } = actions;
+
+  createTypes(`
+    type Mdx implements Node {
+      frontmatter: Frontmatter
+      remoteHeroImage: File @link(from: "fields.remoteHeroImage")
+    }
+
+    type Frontmatter {
+      title: String!
+      date: Date @dateformat
+      lastModified: Date @dateformat
+      title: String
+      description: String
+      slug: String
+      localHeroImage: File @fileByRelativePath
+      remoteHeroImage: String
+      heroImageAlt: String
+    }
+    
+    `);
+};
+
+const { createRemoteFileNode } = require('gatsby-source-filesystem');
+
+exports.onCreateNode = async ({
+  node,
+  createNodeId,
+  actions: { createNodeField, createNode },
+  cache,
+  store
+}) => {
+  if (
+    node.internal.type === 'Mdx' &&
+    node.frontmatter &&
+    node.frontmatter.remoteHeroImage
+  ) {
+    let remoteHeroImage =   await createRemoteFileNode({
+      url: node.frontmatter.remoteHeroImage,
+      parentNodeId: node.id,
+      createNode,
+      createNodeId,
+      cache,
+      store,
+    })
+
+  
+
+    if (remoteHeroImage) {
+      createNodeField({
+        node,
+        name: 'remoteHeroImage',
+        value: remoteHeroImage.id
+      });
+    }
+  }
+};

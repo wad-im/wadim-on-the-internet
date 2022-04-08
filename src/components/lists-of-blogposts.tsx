@@ -47,7 +47,7 @@ const allBlogposts = graphql`
                 date (formatString: "DD MMMM YYYY")
                 slug
                 title
-                heroImage {
+                localHeroImage {
                     childImageSharp {
                     gatsbyImageData (
                         width: 624
@@ -60,6 +60,17 @@ const allBlogposts = graphql`
                 }
                 heroImageAlt
             }
+            remoteHeroImage {
+                childImageSharp {
+                  gatsbyImageData (
+                    width: 624
+                    placeholder: BLURRED
+                    formats: [AUTO, WEBP, AVIF]
+                    aspectRatio: 1.3333333
+                    quality: 80
+                    )
+                }
+              }
             excerpt
             id
             timeToRead

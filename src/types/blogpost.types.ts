@@ -4,6 +4,7 @@ export interface IBlogpost {
     excerpt: string
     id: string
     timeToRead: number
+    remoteHeroImage: any
 }
 
 export interface IBlogpostFrontmatter {
@@ -11,6 +12,7 @@ export interface IBlogpostFrontmatter {
     date: string,
     slug: string,
     description?: string,
-    heroImage: any,
+    localHeroImage: any,
+    remoteHeroImage: any,
     heroImageAlt: string
 }

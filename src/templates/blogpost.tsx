@@ -16,14 +16,14 @@ const Blogpost = ({data}: IBlogPostProps) => {
     } = data.mdx
 
     const {
-        heroImage,
+        localHeroImage,
         heroImageAlt,
         title,
         description,
         date
     } = frontmatter
 
-    const image = heroImage && getImage(heroImage)
+    const image = localHeroImage && getImage(localHeroImage)
 
     return (
         <Layout title={title} description={description}>
@@ -55,7 +55,7 @@ export const query = graphql`
             title
             description
             date (formatString: "DD MMMM YYYY")
-            heroImage {
+            localHeroImage {
                 childImageSharp {
                   gatsbyImageData (
                     width: 816
