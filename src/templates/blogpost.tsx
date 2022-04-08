@@ -4,7 +4,7 @@ import { MDXRenderer } from 'gatsby-plugin-mdx'
 import React from 'react'
 import styled from 'styled-components'
 import Layout from '../components/layout'
-import { IBlogpost, IBlogpostFrontmatter } from '../types/blogpost.types'
+import { IBlogpost } from '../types/blogpost.types'
 
 interface IBlogPostProps {data: {mdx: IBlogpost}}
 
@@ -16,20 +16,20 @@ const Blogpost = ({data}: IBlogPostProps) => {
     } = data.mdx
 
     const {
-        hero_image,
-        hero_image_alt,
+        heroImage,
+        heroImageAlt,
         title,
         description,
         date
     } = frontmatter
 
-    const image = hero_image && getImage(hero_image)
+    const image = heroImage && getImage(heroImage)
 
     return (
         <Layout title={title} description={description}>
             <Container>
                 <div className="hero">
-                    <GatsbyImage image={image} alt={hero_image_alt}/>
+                    <GatsbyImage image={image} alt={heroImageAlt}/>
                     <div className="title">
                         <p className='created-at'>{date}</p>
                         <h1 className='blog-title'>{title}</h1>
@@ -55,7 +55,7 @@ export const query = graphql`
             title
             description
             date (formatString: "DD MMMM YYYY")
-            hero_image {
+            heroImage {
                 childImageSharp {
                   gatsbyImageData (
                     width: 816
@@ -64,7 +64,7 @@ export const query = graphql`
                   )
                 }
               }
-              hero_image_alt
+              heroImageAlt
         }
         body
         }

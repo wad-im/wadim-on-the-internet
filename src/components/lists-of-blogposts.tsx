@@ -44,11 +44,10 @@ const allBlogposts = graphql`
         allMdx (sort: {fields: frontmatter___date, order: DESC}) {
             nodes {
             frontmatter {
-                author
                 date (formatString: "DD MMMM YYYY")
                 slug
                 title
-                hero_image {
+                heroImage {
                     childImageSharp {
                     gatsbyImageData (
                         width: 624
@@ -59,7 +58,7 @@ const allBlogposts = graphql`
                     )
                     }
                 }
-                hero_image_alt
+                heroImageAlt
             }
             excerpt
             id

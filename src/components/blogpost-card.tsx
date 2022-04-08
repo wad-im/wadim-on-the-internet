@@ -26,18 +26,18 @@ const BlogpostCard = ({data}: BlogPostCardProps)=>{
         title,
         date,
         slug,
-        hero_image,
-        hero_image_alt
+        heroImage,
+        heroImageAlt
     } = frontmatter
 
-    const image= hero_image && getImage(hero_image)
+    const image= heroImage && getImage(heroImage)
 
 
     return (
         <Card to={slug}>
             <GatsbyImage
                 image={image}
-                alt={hero_image_alt}
+                alt={heroImageAlt}
             />
             <p className='created-at'> {date} &#8226; {timeToRead} min.</p>
             <h2 className='title'>{title}</h2>

@@ -8,10 +8,9 @@ export interface IBlogpost {
 
 export interface IBlogpostFrontmatter {
     title: string,
-    author: string,
     date: string,
     slug: string,
     description?: string,
-    hero_image: any,
-    hero_image_alt: string
+    heroImage: any,
+    heroImageAlt: string
 }
