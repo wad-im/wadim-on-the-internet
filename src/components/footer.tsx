@@ -6,7 +6,7 @@ const Footer = ()=>{
     return (
         <StyledFooter>
             <Socials/>
-            <p>&#169; { new Date().getFullYear().toString()} </p>
+            <p>CC BY-NC 3.0,  { new Date().getFullYear().toString()} </p>
         </StyledFooter>
     )
 }
