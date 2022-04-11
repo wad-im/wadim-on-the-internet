@@ -33,8 +33,6 @@ const BlogpostCard = ({data}: BlogPostCardProps)=>{
 
     const image= remoteHeroImage && getImage(remoteHeroImage)
 
-    console.log(image)
-
 
     return (
         <Card to={slug}>

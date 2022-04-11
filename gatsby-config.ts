@@ -3,7 +3,7 @@ import type { GatsbyConfig } from "gatsby";
 const config: GatsbyConfig = {
   siteMetadata: {
     title: `wadim baslow`,
-    siteUrl: `https://www.wadimbaslow.com`,
+    siteUrl: `https://www.wadimbaslow.com/`,
     description: `Wadim's blog`,
     author: `Wadim Baslow`
   },
@@ -34,12 +34,6 @@ const config: GatsbyConfig = {
       options: {
         name: "pages",
         path: "./src/pages/",
-      },
-    },
-    {
-      resolve: `gatsby-plugin-canonical-urls`,
-      options: {
-        siteUrl: `https://www.wadimbaslow.com`,
       },
     },
   ],

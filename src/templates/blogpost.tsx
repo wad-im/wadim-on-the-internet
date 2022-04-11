@@ -20,13 +20,14 @@ const Blogpost = ({data}: IBlogPostProps) => {
         heroImageAlt,
         title,
         description,
-        date
+        date,
+        slug
     } = frontmatter
 
     const image = localHeroImage && getImage(localHeroImage)
 
     return (
-        <Layout title={title} description={description}>
+        <Layout title={title} description={description} slug={slug}>
             <Container>
                 <div className="hero">
                     <GatsbyImage image={image} alt={heroImageAlt}/>
@@ -53,6 +54,7 @@ export const query = graphql`
         mdx(id: {eq: $id}) {
         frontmatter {
             title
+            slug
             description
             date (formatString: "DD MMMM YYYY")
             localHeroImage {

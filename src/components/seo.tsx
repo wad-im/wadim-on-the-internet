@@ -9,9 +9,10 @@ import { ISeo } from "../types/seo.types"
 export interface SeoProps {
     title?: string,
     description?: string,
+    slug?: string
 }
 
-const Seo = ({title, description}: SeoProps)=>{
+const Seo = ({title, description, slug}: SeoProps)=>{
 
     const { href } = useLocation()
     const { site } = useStaticQuery(seoData)
@@ -27,7 +28,7 @@ const Seo = ({title, description}: SeoProps)=>{
         title: title ? `${title} | ${defaultTitle}` : defaultTitle,
         description: description || defaultDescription,
         author: defaultAuthor,
-        siteUrl: siteUrl,
+        siteUrl: slug ? `${siteUrl}/${slug}` : siteUrl,
       }
 
     return (
@@ -35,6 +36,7 @@ const Seo = ({title, description}: SeoProps)=>{
             
             <meta name="description" content={seo.description}/>
             <meta name="author" content={seo.author}></meta>
+            <link rel="canonical" href={seo.siteUrl}/>
 
             {/* <link rel="base" href={seo.baseUrl} /> */}
 
@@ -42,7 +44,7 @@ const Seo = ({title, description}: SeoProps)=>{
             <meta property="og:description" content={seo.description} />
 
             {/* <meta property="og:image" content={seo.image} /> */}
-            <meta property="og:url" content={href} />
+            <meta property="og:url" content={seo.siteUrl} />
             <meta property="og:type" content="website" />
 
             <meta name="twitter:card" content="summary_large_image" />
