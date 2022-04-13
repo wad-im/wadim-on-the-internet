@@ -6,7 +6,7 @@ const Footer = ()=>{
     return (
         <StyledFooter>
             <Socials/>
-            <p>CC BY-NC 3.0,  { new Date().getFullYear().toString()} </p>
+            <p><a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a>   { new Date().getFullYear().toString()} </p>
         </StyledFooter>
     )
 }
@@ -18,4 +18,5 @@ const StyledFooter = styled.footer`
     display: flex;
     align-items: center;
     p {margin-bottom: 0;}
+    a {text-decoration: none;}
 `
