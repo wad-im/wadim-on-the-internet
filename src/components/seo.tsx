@@ -28,7 +28,7 @@ const Seo = ({title, description, slug}: SeoProps)=>{
         title: title ? `${title} | ${defaultTitle}` : defaultTitle,
         description: description || defaultDescription,
         author: defaultAuthor,
-        siteUrl: slug ? `${siteUrl}/${slug}/` : `${siteUrl}/`,
+        siteUrl: slug ? `${siteUrl}${slug}/` : `${siteUrl}/`,
       }
 
     return (
