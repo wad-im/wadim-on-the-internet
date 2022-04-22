@@ -25,7 +25,7 @@ const GlobalStyle = createGlobalStyle`
     }
     p, ul, ol {
         line-height: ${({theme}) => theme.lineheight.relaxed};
-        margin-bottom: 1.5rem;
+        margin-bottom: 1rem;
     }
     ul, ol {
         margin-left: 2rem;

@@ -12,7 +12,8 @@ const Blogpost = ({data}: IBlogPostProps) => {
 
     const {
         frontmatter,
-        body
+        body,
+        timeToRead
     } = data.mdx
 
     const {
@@ -32,7 +33,7 @@ const Blogpost = ({data}: IBlogPostProps) => {
                 <div className="hero">
                     <GatsbyImage image={image} alt={heroImageAlt}/>
                     <div className="title">
-                        <p className='created-at'>{date}</p>
+                        <p className='created-at'>published on {date} &bull; {timeToRead} min.</p>
                         <h1 className='blog-title'>{title}</h1>
                     </div>
                 </div>
@@ -69,6 +70,7 @@ export const query = graphql`
               heroImageAlt
         }
         body
+        timeToRead
         }
     }
 `
@@ -102,6 +104,10 @@ const Container = styled.article`
                 color:${({theme})=> theme.color.primary};
             }
         }
+        blockquote {
+            padding-left: 1rem;
+            border-left: solid 0.2rem ${({theme})=> theme.color.background.darker};
+        }
     }
     @media screen and (max-width: 55rem){
         grid-template-columns: 1fr;
@@ -109,12 +115,14 @@ const Container = styled.article`
             grid-column: span 1;
             flex-direction: column;
             margin-bottom: 0rem;
-            
             background-color: ${({theme})=> theme.color.background.main};
             .title {
                 margin-left: 0;
                 padding-left: 0.5rem;
                 padding-bottom: 0;
+                h1 {
+                    line-height: ${({theme}) => theme.lineheight.snug};
+                }
             }
         }
         .text-body {
