@@ -6,7 +6,7 @@ const Header = ()=>{
     return (
         <StyledHeader>
             <Link to='/' className="dummy-logo">WB</Link>
-            <h1>wadim baslow</h1>
+            <Link to='/'><h1>wadim baslow</h1></Link>
         </StyledHeader>
     )
 }
@@ -22,6 +22,9 @@ const StyledHeader = styled.header`
         font-weight: 700;
         font-size: ${({theme})=> theme.text.h2};
     }
+    a {
+        text-decoration: none;
+    }
     .dummy-logo {
         padding: 1rem;
         font-weight: 700;
@@ -29,6 +32,5 @@ const StyledHeader = styled.header`
         color: #fff;
         border-radius: 50%;
         margin-right: 2rem;
-        text-decoration: none;
     }
 `

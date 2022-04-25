@@ -9,12 +9,12 @@ import { ISeo } from "../types/seo.types"
 export interface SeoProps {
     title?: string,
     description?: string,
-    slug?: string
+    slug?: string,
+    seoImage?: string
 }
 
-const Seo = ({title, description, slug}: SeoProps)=>{
+const Seo = ({title, description, slug, seoImage}: SeoProps)=>{
 
-    const { href } = useLocation()
     const { site } = useStaticQuery(seoData)
 
     const {
@@ -29,7 +29,9 @@ const Seo = ({title, description, slug}: SeoProps)=>{
         description: description || defaultDescription,
         author: defaultAuthor,
         siteUrl: slug ? `${siteUrl}${slug}/` : `${siteUrl}/`,
+        seoImage: seoImage ? seoImage : undefined
       }
+
 
     return (
         <Helmet htmlAttributes={{ lang: "en" }} title={seo.title}>
@@ -38,23 +40,21 @@ const Seo = ({title, description, slug}: SeoProps)=>{
             <meta name="author" content={seo.author}></meta>
             <link rel="canonical" href={seo.siteUrl}/>
 
-            {/* <link rel="base" href={seo.baseUrl} /> */}
-
             <meta property="og:title" content={seo.author} />
             <meta property="og:description" content={seo.description} />
 
-            {/* <meta property="og:image" content={seo.image} /> */}
+            {<meta property="og:image" content={seo.seoImage} />}
             <meta property="og:url" content={seo.siteUrl} />
             <meta property="og:type" content="website" />
 
             <meta name="twitter:card" content="summary_large_image" />
             <meta name="twitter:title" content={seo.author} />
             <meta name="twitter:description" content={seo.description}/>
-            {/* <meta name="twitter:image" content={seo.image} /> */}
+            <meta name="twitter:image" content={seo.seoImage} />
 
             <meta itemProp="name" content='wadim' />
             <meta itemProp="description" content={seo.description} />
-            {/* <meta itemProp="image" content={seo.image} /> */}
+            <meta itemProp="image" content={seo.seoImage} />
 
             <meta name="theme-color" content={theme.color.primary} />
             <meta name="msapplication-navbutton-color" content={theme.color.primary} />

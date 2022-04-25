@@ -3,4 +3,5 @@ export interface ISeo {
     description?: string,
     author: string,
     siteUrl: string,
+    seoImage: string | undefined
 }

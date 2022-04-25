@@ -13,11 +13,12 @@ const Blogpost = ({data}: IBlogPostProps) => {
     const {
         frontmatter,
         body,
-        timeToRead
+        timeToRead,
+        remoteHeroImage,
+        excerpt
     } = data.mdx
 
     const {
-        localHeroImage,
         heroImageAlt,
         title,
         description,
@@ -25,16 +26,19 @@ const Blogpost = ({data}: IBlogPostProps) => {
         slug
     } = frontmatter
 
-    const image = localHeroImage && getImage(localHeroImage)
+    const image = remoteHeroImage && getImage(remoteHeroImage)
+
+    console.log(remoteHeroImage.url)
 
     return (
-        <Layout title={title} description={description} slug={slug}>
+        <Layout title={title} description={description || excerpt} seoImage={remoteHeroImage.url} slug={slug}>
             <Container>
                 <div className="hero">
-                    <GatsbyImage image={image} alt={heroImageAlt}/>
+                    <GatsbyImage image={image} alt={heroImageAlt} className='hero-image'/>
                     <div className="title">
-                        <p className='created-at'>published on {date} &bull; {timeToRead} min.</p>
                         <h1 className='blog-title'>{title}</h1>
+                        <p className='created-by'>by Wadim Baslow</p>
+                        <p className='created-at'>published on {date} &bull; {timeToRead} min.</p>
                     </div>
                 </div>
                 
@@ -58,19 +62,22 @@ export const query = graphql`
             slug
             description
             date (formatString: "DD MMMM YYYY")
-            localHeroImage {
-                childImageSharp {
-                  gatsbyImageData (
-                    width: 816
-                    placeholder: BLURRED
-                    formats: [AUTO, WEBP, AVIF]
-                  )
-                }
-              }
-              heroImageAlt
+            heroImageAlt
         }
+        remoteHeroImage {
+            url
+            childImageSharp {
+              gatsbyImageData (
+                width: 816
+                placeholder: BLURRED
+                formats: [AUTO, WEBP, AVIF]
+                quality: 80
+                )
+            }
+          }
         body
         timeToRead
+        excerpt
         }
     }
 `
@@ -83,16 +90,24 @@ const Container = styled.article`
     }
     .hero {
         grid-column: 1 / span 3;
-        display: flex;
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        grid-column-gap: 2rem;
         margin-bottom: 4rem;
         background-color: ${({theme})=> theme.color.background.dark};
+        .hero-image {
+            grid-column: 1 / span 3;
+        }
         .title {
-            margin-left: 2rem;
-            padding: 2rem;
+            grid-column: 4 / span 2;
+            padding: 2rem 2rem 2rem 0;
             display: flex;
             flex-direction: column;
             justify-content: center;
             min-width: 33%;
+        }
+        .created-by {
+            margin-bottom: 0;
         }
     }
     .text-body {
@@ -113,6 +128,7 @@ const Container = styled.article`
         grid-template-columns: 1fr;
         .hero {
             grid-column: span 1;
+            display: flex;
             flex-direction: column;
             margin-bottom: 0rem;
             background-color: ${({theme})=> theme.color.background.main};
@@ -124,6 +140,9 @@ const Container = styled.article`
                     line-height: ${({theme}) => theme.lineheight.snug};
                 }
             }
+        }
+        .created-at {
+            margin-bottom: 2rem;
         }
         .text-body {
             grid-column: 1 / span 1;

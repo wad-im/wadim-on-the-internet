@@ -8,10 +8,10 @@ interface LayoutProps extends SeoProps {
     children: any
 }
 
-const Layout = ({children, title, description, slug}: LayoutProps)=>{
+const Layout = ({children, title, description, slug, seoImage}: LayoutProps)=>{
     return (
         <LayoutContainer>
-            <Seo title={title} description={description} slug={slug}/>
+            <Seo title={title} description={description} slug={slug} seoImage={seoImage}/>
             <Header/>
             <main>
                 {children}

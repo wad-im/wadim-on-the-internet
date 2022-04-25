@@ -48,6 +48,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       localHeroImage: File @fileByRelativePath
       remoteHeroImage: String
       heroImageAlt: String
+      ogImage: String
     }
     
     `);
