@@ -1,6 +1,7 @@
 import { graphql } from 'gatsby'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
+import { DateTime } from 'luxon'
 import React from 'react'
 import styled from 'styled-components'
 import Layout from '../components/layout'
@@ -28,7 +29,7 @@ const Blogpost = ({data}: IBlogPostProps) => {
 
     const image = remoteHeroImage && getImage(remoteHeroImage)
 
-    console.log(remoteHeroImage.url)
+    const publishishingDate = DateTime.fromISO(date).toLocaleString(DateTime.DATE_FULL)
 
     return (
         <Layout title={title} description={description || excerpt} seoImage={remoteHeroImage.url} slug={slug}>
@@ -38,7 +39,7 @@ const Blogpost = ({data}: IBlogPostProps) => {
                     <div className="title">
                         <h1 className='blog-title'>{title}</h1>
                         <p className='created-by'>by Wadim Baslow</p>
-                        <p className='created-at'>published on {date} &bull; {timeToRead} min.</p>
+                        <p className='created-at'>published on <time dateTime={date}>{publishishingDate}</time>&bull; {timeToRead} min.</p>
                     </div>
                 </div>
                 
@@ -61,7 +62,7 @@ export const query = graphql`
             title
             slug
             description
-            date (formatString: "DD MMMM YYYY")
+            date
             heroImageAlt
         }
         remoteHeroImage {
