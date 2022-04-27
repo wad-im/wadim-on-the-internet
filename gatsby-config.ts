@@ -4,7 +4,7 @@ const config: GatsbyConfig = {
   siteMetadata: {
     title: `Wadim Baslow`,
     siteUrl: `https://wadimbaslow.com`,
-    description: `Hi, I am Wadim. I am a senior project manager in the sustainability space focusing on collaboration, participation and stakeholder management.`,
+    description: `Hi, I am Wadim. I am a senior project manager in sustainability and with expertise with the design, management and facilitation of multi-stakeholder projects.`,
     author: `Wadim Baslow`
   },
   plugins: [
