@@ -2,9 +2,9 @@ import type { GatsbyConfig } from "gatsby";
 
 const config: GatsbyConfig = {
   siteMetadata: {
-    title: `wadim baslow • sustainable development by collaborating better`,
+    title: `Wadim Baslow's website`,
     siteUrl: `https://wadimbaslow.com`,
-    description: `We can do better bringing people with different backgrounds and perspectives together for change. I explore how in my personal blog.`,
+    description: `Hi, I am Wadim. We can do better bringing people with different backgrounds and perspectives together in sustainable development and change. I explore how in my personal blog.`,
     author: `Wadim Baslow`
   },
   plugins: [
