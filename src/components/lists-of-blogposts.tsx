@@ -51,11 +51,7 @@ const allBlogposts = graphql`
                     childImageSharp {
                     gatsbyImageData (
                         width: 624
-                        placeholder: BLURRED
-                        formats: [AUTO, WEBP, AVIF]
-                        aspectRatio: 1.3333333
-                        quality: 80
-                    )
+                        )
                     }
                 }
                 heroImageAlt
@@ -64,10 +60,7 @@ const allBlogposts = graphql`
                 childImageSharp {
                   gatsbyImageData (
                     width: 624
-                    placeholder: BLURRED
-                    formats: [AUTO, WEBP, AVIF]
                     aspectRatio: 1.3333333
-                    quality: 80
                     )
                 }
               }

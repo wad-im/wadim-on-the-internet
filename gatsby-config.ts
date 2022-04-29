@@ -4,7 +4,7 @@ const config: GatsbyConfig = {
   siteMetadata: {
     title: `Wadim Baslow`,
     siteUrl: `https://wadimbaslow.com`,
-    description: `Hi, I am Wadim. I am a senior project manager in sustainability and expertise with multi-stakeholder project design, management & facilitation.`,
+    description: `Hi, I am Wadim. I am a senior project manager in sustainability with expertise in multi-stakeholder project design, management & facilitation.`,
     author: `Wadim Baslow`
   },
   plugins: [
@@ -13,7 +13,17 @@ const config: GatsbyConfig = {
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-sitemap",
     "gatsby-plugin-mdx",
-    "gatsby-plugin-sharp",
+    {
+      resolve: `gatsby-plugin-sharp`,
+      options: {
+        defaults: {
+          formats: [`auto`, `webp`],
+          placeholder: `blurred`,
+          quality: 80,
+          width: 896
+        }
+      }
+    },,
     "gatsby-transformer-sharp",
     {
       resolve: "gatsby-source-filesystem",
