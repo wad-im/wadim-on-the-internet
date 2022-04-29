@@ -14,16 +14,15 @@ const config: GatsbyConfig = {
     "gatsby-plugin-sitemap",
     "gatsby-plugin-mdx",
     {
-      resolve: `gatsby-plugin-sharp`,
+      resolve: "gatsby-plugin-sharp",
       options: {
         defaults: {
-          formats: [`auto`, `webp`],
-          placeholder: `blurred`,
+          formats: ["auto", "webp"],
+          placeholder: "blurred",
           quality: 80,
-          width: 896
         }
       }
-    },,
+    },
     "gatsby-transformer-sharp",
     {
       resolve: "gatsby-source-filesystem",
