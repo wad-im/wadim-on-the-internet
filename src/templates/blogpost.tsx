@@ -120,6 +120,7 @@ const Container = styled.article`
         blockquote {
             padding-left: 1rem;
             border-left: solid 0.2rem ${({theme})=> theme.color.background.darker};
+            font-style: italic;
         }
     }
     @media screen and (max-width: 55rem){
