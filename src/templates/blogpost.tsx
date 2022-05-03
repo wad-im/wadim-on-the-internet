@@ -1,4 +1,4 @@
-import { graphql } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import { DateTime } from 'luxon'
@@ -6,6 +6,7 @@ import React from 'react'
 import styled from 'styled-components'
 import Layout from '../components/layout'
 import { IBlogpost } from '../types/blogpost.types'
+import { IconArrowLeft } from '@tabler/icons';
 
 interface IBlogPostProps {data: {mdx: IBlogpost}}
 
@@ -37,6 +38,10 @@ const Blogpost = ({data}: IBlogPostProps) => {
                 <div className="hero">
                     <GatsbyImage image={image} alt={heroImageAlt} className='hero-image'/>
                     <div className="title">
+                        <Link className="allposts-link" to='/'>
+                            <IconArrowLeft/>
+                            <span>all posts</span>
+                        </Link>
                         <h1 className='blog-title'>{title}</h1>
                         <p className='created-by'>by Wadim Baslow</p>
                         <p className='created-at'>published on <time dateTime={date}>{publishishingDate}</time>&bull; {timeToRead} min.</p>
@@ -96,6 +101,22 @@ const Container = styled.article`
         .hero-image {
             grid-column: 1 / span 3;
         }
+        .allposts-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            margin-bottom: 1rem;
+            font-size: ${({theme})=> theme.text.sm};
+            transition: color 0.2s ease;
+            svg {
+                margin-right: .5rem;
+                width: 1.25rem;
+                height: 1.25rem;
+            }
+            :hover {
+                color: ${({theme})=> theme.color.primary};
+            }
+        }
         .title {
             grid-column: 4 / span 2;
             padding: 2rem 2rem 2rem 0;
@@ -111,7 +132,7 @@ const Container = styled.article`
     .text-body {
         grid-column: 2 / span 1;
         a {
-            transition: color 0.3s ease;
+            transition: color 0.2s ease;
             text-decoration: underline;
             :hover {
                 color:${({theme})=> theme.color.primary};
