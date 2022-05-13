@@ -18,5 +18,11 @@ const StyledFooter = styled.footer`
     display: flex;
     align-items: center;
     p {margin-bottom: 0;}
-    a {text-decoration: none;}
+    a {
+        text-decoration: none;
+        transition: color 0.2s ease;
+        :hover {
+            color: ${({theme})=> theme.color.primary};
+        }
+     }
 `

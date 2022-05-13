@@ -26,6 +26,7 @@ const GlobalStyle = createGlobalStyle`
     p, ul, ol {
         line-height: ${({theme}) => theme.lineheight.relaxed};
         margin-bottom: 1rem;
+        font-weight: 300;
     }
     ul, ol {
         margin-left: 2rem;
@@ -36,27 +37,33 @@ const GlobalStyle = createGlobalStyle`
     }
     h1 {
         font-size: ${({theme}) => theme.text.h1};
-        line-height: ${({theme}) => theme.lineheight.relaxed};
+        line-height: ${({theme}) => theme.lineheight.normal};
         margin-bottom: 1.75rem;
+        font-weight: 600;
 
     }
     h2 {
         font-size: ${({theme}) => theme.text.h2};
-        line-height: ${({theme}) => theme.lineheight.tight};
+        line-height: ${({theme}) => theme.lineheight.normal};
         margin-bottom: 1.125rem;
         margin-top: 1.125rem;
+        font-weight: 500;
     }
     h3 {
         font-size: ${({theme}) => theme.text.h3};
         line-height: ${({theme}) => theme.lineheight.snug};
         margin-top: 1.4rem;
         margin-bottom: .75rem;
+        font-weight: 500;
     }
     h4 {
         line-height: ${({theme}) => theme.lineheight.relaxed};
     }
     a {
         color: ${({theme}) => theme.color.text};
+    }
+    strong {
+        font-weight: 500;
     }
 `
 

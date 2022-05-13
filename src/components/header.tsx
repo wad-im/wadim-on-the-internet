@@ -19,7 +19,7 @@ const StyledHeader = styled.header`
     align-items: center;
     h1 {
         margin-bottom: 0;
-        font-weight: 700;
+        font-weight: 600;
         font-size: ${({theme})=> theme.text.h2};
     }
     a {
@@ -27,7 +27,7 @@ const StyledHeader = styled.header`
     }
     .dummy-logo {
         padding: 1rem;
-        font-weight: 700;
+        font-weight: 600;
         background-color: ${({theme})=> theme.color.primary};
         color: #fff;
         border-radius: 50%;
