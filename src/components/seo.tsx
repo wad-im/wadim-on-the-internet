@@ -25,7 +25,7 @@ const Seo = ({title, description, slug, seoImage}: SeoProps)=>{
     } = site.siteMetadata
 
     const seo: ISeo = {
-        title: title ? `${title} | ${defaultTitle}` : defaultTitle,
+        title: title ? `${title}` : defaultTitle,
         description: description || defaultDescription,
         author: defaultAuthor,
         siteUrl: slug ? `${siteUrl}${slug}/` : `${siteUrl}/`,
