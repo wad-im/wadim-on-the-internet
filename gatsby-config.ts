@@ -32,6 +32,19 @@ const config: GatsbyConfig = {
         path: `./blog`,
       },
     },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `Wadim Baslow`,
+        short_name: `Wadim Baslow`,
+        start_url: `/`,
+        background_color: `#FAFAFA`,
+        theme_color: `#0284C7`,
+        display: `browser`,
+        icon: `src/images/icon-wadimbaslow.png`
+      },
+    },
+    "gatsby-plugin-offline",
   ],
   trailingSlash: "always",
 };
