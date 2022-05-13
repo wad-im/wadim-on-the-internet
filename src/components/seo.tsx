@@ -21,6 +21,7 @@ const Seo = ({title, description, slug, seoImage}: SeoProps)=>{
         defaultTitle,
         defaultDescription,
         defaultAuthor,
+        defaultSeoImage,
         siteUrl,
     } = site.siteMetadata
 
@@ -29,7 +30,7 @@ const Seo = ({title, description, slug, seoImage}: SeoProps)=>{
         description: description || defaultDescription,
         author: defaultAuthor,
         siteUrl: slug ? `${siteUrl}${slug}/` : `${siteUrl}/`,
-        seoImage: seoImage ? seoImage : undefined
+        seoImage: seoImage ? seoImage : defaultSeoImage
       }
 
 
@@ -73,6 +74,7 @@ const seoData = graphql`
         defaultDescription: description
         defaultAuthor: author
         siteUrl
+        defaultSeoImage: seoImageUrl
       }
     }
   }

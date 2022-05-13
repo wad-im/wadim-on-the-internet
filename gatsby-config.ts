@@ -5,7 +5,8 @@ const config: GatsbyConfig = {
     title: `Wadim Baslow`,
     siteUrl: `https://wadimbaslow.com`,
     description: `Hi, I am Wadim. I am a senior project manager in sustainability with expertise in multi-stakeholder project design, management & facilitation.`,
-    author: `Wadim Baslow`
+    author: `Wadim Baslow`,
+    seoImageUrl: 'https://res.cloudinary.com/wadimbaslow-com/image/upload/v1652437341/seoImage-wadimBaslowCom_1_kfrn5l.jpg'
   },
   plugins: [
     "gatsby-plugin-styled-components",
