@@ -33,4 +33,9 @@ const StyledHeader = styled.header`
         border-radius: 50%;
         margin-right: 2rem;
     }
+    @media screen and (max-width: 37rem){
+        h1, .dummy-logo {
+            font-weight:700;
+        }
+    }
 `

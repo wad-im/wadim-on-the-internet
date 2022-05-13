@@ -65,6 +65,14 @@ const GlobalStyle = createGlobalStyle`
     strong {
         font-weight: 500;
     }
+    @media screen and (max-width: 37rem){
+        h1 {
+            font-weight:700;
+        }
+        h2, h3 {
+            font-weight:600;
+        }
+    }
 `
 
 
