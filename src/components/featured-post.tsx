@@ -48,6 +48,9 @@ const LargeCard = styled(Link)`
     grid-template-columns: 61.8% 38.2%;
     text-decoration: none;
     background-color: ${({theme})=> theme.color.background.dark};
+    h2 {
+        font-weight: 600;
+    }
     .details {
         padding: 2rem;
         display: flex;
@@ -68,6 +71,9 @@ const LargeCard = styled(Link)`
         grid-column: span 1;
         .details {
             padding: 2rem 1rem 1rem 1rem;
+        }
+        h2 {
+            font-weight: 700;
         }
     }
     

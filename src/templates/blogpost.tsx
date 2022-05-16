@@ -8,7 +8,7 @@ import Layout from '../components/layout'
 import { IBlogpost } from '../types/blogpost.types'
 import { IconArrowLeft } from '@tabler/icons';
 
-interface IBlogPostProps {data: {mdx: IBlogpost}}
+export interface IBlogPostProps {data: {mdx: IBlogpost}}
 
 const Blogpost = ({data}: IBlogPostProps) => {
 
@@ -87,7 +87,7 @@ export const query = graphql`
 
 // styled-component
 
-const Container = styled.article`
+export const Container = styled.article`
     display: grid;
     grid-template-columns: 1fr 45rem 1fr;
     }

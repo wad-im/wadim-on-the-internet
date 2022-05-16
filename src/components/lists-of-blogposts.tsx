@@ -41,7 +41,7 @@ const Grid = styled.section`
 
 const allBlogposts = graphql`
     query Blogposts {
-        allMdx (sort: {fields: frontmatter___date, order: DESC}) {
+        allMdx (filter: {frontmatter: {slug: {ne: "/about"}}}, sort: {fields: frontmatter___date, order: DESC}) {
             nodes {
             frontmatter {
                 date (formatString: "DD MMMM YYYY")

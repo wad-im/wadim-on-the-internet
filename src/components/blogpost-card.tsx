@@ -52,6 +52,9 @@ const Card = styled(Link)`
     grid-column: span 1;
     padding: 1rem 0;
     text-decoration: none;
+    h2 {
+        font-weight: 600;
+    }
     .image-placeholder {
         aspect-ratio: 4/3;
         background-color: ${({theme}) => theme.color.background.dark};
@@ -66,6 +69,11 @@ const Card = styled(Link)`
         transition: color 0.3s ease;
         :hover {
             color: ${({theme}) => theme.color.primary};
+        }
+    }
+    @media screen and (max-width: 37rem){
+        h2 {
+            font-weight: 700;
         }
     }
 `
