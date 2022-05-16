@@ -43,7 +43,7 @@ const Blogpost = ({data}: IBlogPostProps) => {
                             <span>all posts</span>
                         </Link>
                         <h1 className='blog-title'>{title}</h1>
-                        <p className='created-by'>by Wadim Baslow</p>
+                        <p className='created-by'>by <Link to="/about">Wadim Baslow</Link></p>
                         <p className='created-at'>published on <time dateTime={date}>{publishishingDate}</time> &bull; {timeToRead} min.</p>
                     </div>
                 </div>
