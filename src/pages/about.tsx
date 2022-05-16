@@ -35,7 +35,7 @@ const AboutPage = ({data}: IBlogPostProps)=>{
                             <IconArrowLeft/>
                             <span>all posts</span>
                         </Link> */}
-                        <h1 className='blog-title'>Hi. 👋 <br/> {title}</h1>
+                        <h1 className='blog-title'>Hi.<br/>{title}</h1>
                     </div>
                 </div>
                 

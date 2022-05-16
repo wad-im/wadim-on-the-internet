@@ -127,6 +127,13 @@ export const Container = styled.article`
         }
         .created-by {
             margin-bottom: 0;
+            a {
+                transition: color 0.2s ease;
+                text-decoration: underline;
+                :hover {
+                    color:${({theme})=> theme.color.primary};
+                }
+            }
         }
     }
     .text-body {
