@@ -14,6 +14,7 @@ const GlobalStyle = createGlobalStyle`
         padding: 0;
         box-sizing: 0;
     }
+    
     html{
         scroll-behavior: smooth;
     }
@@ -73,6 +74,7 @@ const GlobalStyle = createGlobalStyle`
             font-weight:600;
         }
     }
+    
 `
 
 

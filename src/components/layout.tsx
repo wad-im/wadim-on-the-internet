@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Footer from "./footer";
 import Header from "./header";
+import MobileMenu from "./mobile-menu";
 import Seo, { SeoProps } from "./seo";
 
 interface LayoutProps extends SeoProps {
@@ -9,10 +10,14 @@ interface LayoutProps extends SeoProps {
 }
 
 const Layout = ({children, title, description, slug, seoImage}: LayoutProps)=>{
+
+    const [openMenu, setOpenMenu] =useState(false)
+
     return (
         <LayoutContainer>
             <Seo title={title} description={description} slug={slug} seoImage={seoImage}/>
-            <Header/>
+            <Header open={openMenu} setOpen={setOpenMenu}/>
+            <MobileMenu open={openMenu} setOpen={setOpenMenu}/>
             <main>
                 {children}
             </main>

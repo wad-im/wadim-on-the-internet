@@ -1,12 +1,26 @@
 import { Link } from "gatsby";
 import React from "react";
 import styled from "styled-components";
+import MenuButton from "./menu-button";
 
-const Header = ()=>{
+export interface HeaderProps {
+    open: boolean,
+    setOpen: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+const Header = ({open, setOpen}: HeaderProps)=>{
     return (
         <StyledHeader>
-            <Link to='/' className="dummy-logo">WB</Link>
-            <Link to='/'><h1>wadim baslow</h1></Link>
+            <Link to='/' className="logo">
+                <div className="wb-icon">WB</div>
+                <h1>wadim baslow</h1>
+            </Link>
+            <nav>
+                <MenuButton open={open} setOpen={setOpen}/>
+                <ul className="nav-items">
+                    <li className="nav-item"><Link to="/about">About</Link></li>
+                </ul>
+            </nav>
         </StyledHeader>
     )
 }
@@ -17,6 +31,7 @@ const StyledHeader = styled.header`
     padding: 2rem 0;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     h1 {
         margin-bottom: 0;
         font-weight: 600;
@@ -25,13 +40,33 @@ const StyledHeader = styled.header`
     a {
         text-decoration: none;
     }
-    .dummy-logo {
+    .logo {
+        display: flex;
+        align-items: center;
+    }
+    .wb-icon {
         padding: 1rem;
         font-weight: 600;
         background-color: ${({theme})=> theme.color.primary};
         color: #fff;
         border-radius: 50%;
         margin-right: 2rem;
+    }
+    .nav-item {
+        list-style:none;
+        font-weight: 400;
+        padding: 0.5rem;
+        a {
+            transition: color 0.2s ease;
+            :hover {
+                color:${({theme})=> theme.color.primary};
+            }
+        }
+    }
+    @media screen and (max-width: 55rem) {
+        .nav-items {
+            display: none;
+        }
     }
     @media screen and (max-width: 37rem){
         h1, .dummy-logo {
