@@ -12,7 +12,6 @@ interface LayoutProps extends SeoProps {
 
 const Layout = ({children, title, description, slug, seoImage}: LayoutProps)=>{
 
-    console.log(location)
     const [openMenu, setOpenMenu] =useState(false)
 
     return (
