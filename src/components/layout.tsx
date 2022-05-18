@@ -4,19 +4,23 @@ import Footer from "./footer";
 import Header from "./header";
 import MobileMenu from "./mobile-menu";
 import Seo, { SeoProps } from "./seo";
+import {PageProps} from 'gatsby'
 
 interface LayoutProps extends SeoProps {
-    children: any
+    children: any,
+    location: any
+    
 }
 
-const Layout = ({children, title, description, slug, seoImage}: LayoutProps)=>{
+const Layout = ({children, location, title, description, slug, seoImage}: LayoutProps)=>{
 
+    console.log(location)
     const [openMenu, setOpenMenu] =useState(false)
 
     return (
         <LayoutContainer>
             <Seo title={title} description={description} slug={slug} seoImage={seoImage}/>
-            <Header open={openMenu} setOpen={setOpenMenu}/>
+            <Header open={openMenu} setOpen={setOpenMenu} location={location}/>
             <MobileMenu open={openMenu} setOpen={setOpenMenu}/>
             <main>
                 {children}

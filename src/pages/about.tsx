@@ -23,10 +23,9 @@ const AboutPage = ({data}: IBlogPostProps)=>{
     } = frontmatter
 
     const image = remoteHeroImage && getImage(remoteHeroImage)
-    console.log(title.slice(1, 6))
 
     return (
-        <Layout title="About | Wadim Baslow" description={description || excerpt} seoImage={remoteHeroImage.url} slug={slug}>
+        <Layout  title="About | Wadim Baslow" description={description || excerpt} seoImage={remoteHeroImage.url} slug={slug}>
             <Container>
             <div className="hero">
                     <GatsbyImage image={image} alt={heroImageAlt} className='hero-image'/>

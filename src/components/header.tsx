@@ -1,11 +1,12 @@
-import { Link } from "gatsby";
+import { Link, PageProps } from "gatsby";
 import React from "react";
 import styled from "styled-components";
 import MenuButton from "./menu-button";
 
+
 export interface HeaderProps {
     open: boolean,
-    setOpen: React.Dispatch<React.SetStateAction<boolean>>
+    setOpen: React.Dispatch<React.SetStateAction<boolean>>,
 }
 
 const Header = ({open, setOpen}: HeaderProps)=>{
@@ -13,12 +14,16 @@ const Header = ({open, setOpen}: HeaderProps)=>{
         <StyledHeader>
             <Link to='/' className="logo">
                 <div className="wb-icon">WB</div>
-                <h1>wadim baslow</h1>
+                <h1 className="wb-title">wadim baslow</h1>
             </Link>
             <nav>
                 <MenuButton open={open} setOpen={setOpen}/>
                 <ul className="nav-items">
-                    <li className="nav-item"><Link to="/about">About</Link></li>
+                    {
+                        location && location.pathname !== '/' &&
+                        <li className="nav-item"><Link to="/" activeClassName="active">Home</Link></li>
+                    }
+                    <li className="nav-item"><Link to="/about" activeClassName="active">About</Link></li>
                 </ul>
             </nav>
         </StyledHeader>
@@ -52,15 +57,22 @@ const StyledHeader = styled.header`
         border-radius: 50%;
         margin-right: 2rem;
     }
+    .nav-items {
+        display: flex;
+    }
     .nav-item {
         list-style:none;
         font-weight: 400;
         padding: 0.5rem;
+        margin-left: 0.5rem;
         a {
             transition: color 0.2s ease;
             :hover {
                 color:${({theme})=> theme.color.primary};
             }
+        }
+        .active {
+            color:${({theme})=> theme.color.primary};
         }
     }
     @media screen and (max-width: 55rem) {
@@ -73,4 +85,12 @@ const StyledHeader = styled.header`
             font-weight:700;
         }
     }
+    @media screen and (max-width: 24rem) {
+        .wb-title {
+            font-size: ${({theme})=> theme.text.base};
+        }
+        .wb-icon {
+            margin-right: 1rem;
+        }
+    })
 `

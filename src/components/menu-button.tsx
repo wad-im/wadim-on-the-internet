@@ -34,5 +34,6 @@ const BurgerMenu = styled.button<MenuProps>`
     display: ${ props => props.open ? 'none' : 'block'};
     @media screen and (min-width: 55rem) {
         display: none;
+        pointer-events: none;
     }
 `

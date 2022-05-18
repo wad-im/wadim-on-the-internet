@@ -3,9 +3,9 @@ import Layout from "../components/layout";
 import BlogpostsList from "../components/lists-of-blogposts";
 
 // markup
-const IndexPage = () => {
+const IndexPage = ({location}) => {
   return (
-    <Layout>
+    <Layout location={location}>
         <BlogpostsList/>
     </Layout>
     

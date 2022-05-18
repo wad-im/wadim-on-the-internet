@@ -19,6 +19,7 @@
     "@mdx-js/react": "^1.6.22",
     "@tabler/icons": "^1.63.0",
     "babel-plugin-styled-components": "^2.0.6",
+    "framer-motion": "^6.3.3",
     "gatsby": "^4.13.0",
     "gatsby-plugin-image": "^2.13.0",
     "gatsby-plugin-manifest": "^4.14.0",
