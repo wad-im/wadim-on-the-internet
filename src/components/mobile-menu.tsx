@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import { Link } from "gatsby"
 import { IconBrandGithub, IconBrandLinkedin, IconBrandTwitter, IconX } from '@tabler/icons'
 import { HeaderProps } from './header'
-import { MenuProps } from './menu-button'
 import { motion } from 'framer-motion'
 
 const MobileMenu = ({open, setOpen}: HeaderProps) => {
@@ -15,7 +14,8 @@ const MobileMenu = ({open, setOpen}: HeaderProps) => {
     const variants = {
         open: { 
             opacity: .95, 
-            x: 0 , 
+            x: 0 ,
+            zIndex: 5,
             transition: {
                 type: 'spring',
                 duration: 0.8,
@@ -23,6 +23,7 @@ const MobileMenu = ({open, setOpen}: HeaderProps) => {
         closed: { 
             opacity: 0, 
             x: "100wv",
+            zIndex: -1,
             transition: {
                 type: 'spring',
                 duration: 0.8 
@@ -70,8 +71,9 @@ const MenuContainer  = styled(motion.div)`
     width: 100vw;
     height: 100vh;
     background-color: ${({theme}) => theme.color.background.dark};
-    z-index: 5;
+    z-index: -1;
     overflow: hidden;
+    opacity: 0;
     .menu {
         padding: 2rem 2rem;
         display: flex;
