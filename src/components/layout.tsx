@@ -8,11 +8,9 @@ import {PageProps} from 'gatsby'
 
 interface LayoutProps extends SeoProps {
     children: any,
-    location: any
-    
 }
 
-const Layout = ({children, location, title, description, slug, seoImage}: LayoutProps)=>{
+const Layout = ({children, title, description, slug, seoImage}: LayoutProps)=>{
 
     console.log(location)
     const [openMenu, setOpenMenu] =useState(false)
@@ -20,7 +18,7 @@ const Layout = ({children, location, title, description, slug, seoImage}: Layout
     return (
         <LayoutContainer>
             <Seo title={title} description={description} slug={slug} seoImage={seoImage}/>
-            <Header open={openMenu} setOpen={setOpenMenu} location={location}/>
+            <Header open={openMenu} setOpen={setOpenMenu}/>
             <MobileMenu open={openMenu} setOpen={setOpenMenu}/>
             <main>
                 {children}

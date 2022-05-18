@@ -19,10 +19,7 @@ const Header = ({open, setOpen}: HeaderProps)=>{
             <nav>
                 <MenuButton open={open} setOpen={setOpen}/>
                 <ul className="nav-items">
-                    {
-                        location && location.pathname !== '/' &&
-                        <li className="nav-item"><Link to="/" activeClassName="active">Home</Link></li>
-                    }
+                    <li className="nav-item"><Link to="/" activeClassName="active">Home</Link></li>
                     <li className="nav-item"><Link to="/about" activeClassName="active">About</Link></li>
                 </ul>
             </nav>

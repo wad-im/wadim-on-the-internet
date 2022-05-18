@@ -7,7 +7,6 @@ import styled from 'styled-components'
 import Layout from '../components/layout'
 import { IBlogpost } from '../types/blogpost.types'
 import { IconArrowLeft } from '@tabler/icons';
-import { propTypes } from 'gatsby-plugin-image/dist/src/components/gatsby-image.server'
 
 export interface IBlogPostProps {data: {mdx: IBlogpost}}
 
