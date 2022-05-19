@@ -36,7 +36,9 @@ const Seo = ({title, description, slug, seoImage}: SeoProps)=>{
 
     return (
         <Helmet htmlAttributes={{ lang: "en" }} title={seo.title}>
-            
+
+            <script defer data-domain="wadimbaslow.com" src="https://plausible.io/js/plausible.js"></script>
+
             <meta name="description" content={seo.description}/>
             <meta name="author" content={seo.author}></meta>
             <link rel="canonical" href={seo.siteUrl}/>
