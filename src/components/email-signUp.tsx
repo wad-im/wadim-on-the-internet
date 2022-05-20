@@ -169,5 +169,8 @@ const SignUpBox = styled.div`
         form {
             margin-top: 2rem;
         }
+        .form-container {
+            grid-column: span 2;
+        }
     }
 `
