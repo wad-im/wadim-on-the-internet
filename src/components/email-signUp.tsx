@@ -1,10 +1,22 @@
 import { IconArrowRight } from '@tabler/icons'
+import axios from 'axios'
 import { useFormik } from 'formik'
 import React from 'react'
 import styled from 'styled-components'
 import * as Yup from "yup"
 
 const EmailSignUp = ()=>{
+
+
+    const sendEmail = async (values)=>{
+        const email = values.email
+        try {
+            const response = await axios.post('/api/newsletter', { email })
+            console.log(response.data)
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
 
     const formik = useFormik({
@@ -16,6 +28,7 @@ const EmailSignUp = ()=>{
         }),
         onSubmit: (values, { resetForm }) => {
             console.log(values)
+            sendEmail(values)
             setTimeout(() => {
                 resetForm()
             }, 400)
@@ -24,7 +37,7 @@ const EmailSignUp = ()=>{
 
     return (
         <SignUpBox>
-                <h2>Newsletter <span>(sort of)</span></h2>
+                <h2>Newsletter <span>(sort of) </span></h2>
                 <p>I let you know when there is something new right after I pressed "publish". You will be the first one to get it. It's free. No spam. I don't share your data. Unsubscribe whenever you want.</p>
             <form noValidate onSubmit={formik.handleSubmit} className='signup-form'>
                 <div className="input-container">

@@ -1,12 +1,12 @@
 import { createGlobalStyle} from "styled-components"
 import PublicSans from '../font/PublicSans[wght].ttf'
-
+import PublicSansItalic from '../font/PublicSans-Italic[wght].ttf'
 
 const GlobalStyle = createGlobalStyle`
 
     @font-face {
     font-family: 'Public Sans';
-    src: url(${PublicSans}) format('ttf'),
+    src: url(${PublicSans}) format('ttf'), url(${PublicSansItalic}) format('ttf')
     }
 
     * {
