@@ -14,7 +14,7 @@ export default async function handler(req: GatsbyFunctionRequest , res: GatsbyFu
     }
   }
 
-const subscribeEmail = async (req, res)=>{
+const subscribeEmail = async (req: GatsbyFunctionRequest, res: GatsbyFunctionResponse)=>{
   const {email} = req.body
   const formId = process.env.CONVERTKIT_FORM_ID
   const converkitEndpoint = `https://api.convertkit.com/v3/forms/${formId}/subscribe`
@@ -24,6 +24,11 @@ const subscribeEmail = async (req, res)=>{
     email: email,
   })
 
-  console.log(response)
+  res
+  .status(200)
+  .json({
+    data: response.data,
+  })
+
 }
   

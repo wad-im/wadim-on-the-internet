@@ -1,23 +1,46 @@
 import { IconArrowRight } from '@tabler/icons'
 import axios from 'axios'
 import { useFormik } from 'formik'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import * as Yup from "yup"
 
+interface IValues {
+    email: string | undefined
+}
+
 const EmailSignUp = ()=>{
 
+    const [status, setStatus] = useState("")
+    const [feedback, setFeedback] = useState("")
 
-    const sendEmail = async (values)=>{
+    const sendEmail = async (values: IValues)=>{
         const email = values.email
         try {
             const response = await axios.post('/api/newsletter', { email })
-            console.log(response.data)
+            const {state} = response.data.data.subscription
+            console.log(state)
+            if (state === 'active'){
+                setStatus("email-subscribed")
+            } else (
+                setStatus("success")
+            )
         } catch (error) {
             console.log(error)
         }
     }
 
+    useEffect(()=>{
+        if (status === "submitting") {
+                setFeedback("I'll put you on the list...✍️")
+            } else if (status === "success") {
+                setFeedback(`Done 🎉! I have sent you an email.`)
+            } else if (status === 'email-subscribed') {
+                setFeedback(`It seems like you're already subscribed 🙂.`)  
+            } else if (status === "error") {
+            setFeedback("Oops 😞. Something did not work out.")
+            } else setFeedback("")
+    },[status])
 
     const formik = useFormik({
         initialValues: {
@@ -27,7 +50,7 @@ const EmailSignUp = ()=>{
           email: Yup.string().email("Invalid email address").required("Required"),
         }),
         onSubmit: (values, { resetForm }) => {
-            console.log(values)
+            setStatus("submitting")
             sendEmail(values)
             setTimeout(() => {
                 resetForm()
@@ -39,30 +62,36 @@ const EmailSignUp = ()=>{
         <SignUpBox>
                 <h2>Newsletter <span>(sort of) </span></h2>
                 <p>I let you know when there is something new right after I pressed "publish". You will be the first one to get it. It's free. No spam. I don't share your data. Unsubscribe whenever you want.</p>
-            <form noValidate onSubmit={formik.handleSubmit} className='signup-form'>
-                <div className="input-container">
-                    <label htmlFor="email">Email*</label>
-                    <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        placeholder="example@example.com"
-                        onChange={formik.handleChange}
-                        onBlur={formik.handleBlur}
-                        value={formik.values.email}
-                    />
-                    {formik.touched.email && formik.errors.email ? (
-                    <span className="error-message">{formik.errors.email}</span>
-                    ) : null}
-                </div>
-                <button
-                    type="submit"
-                    className="submit-button"
-                >
-                    <IconArrowRight/>
-                    Subscribe
-                </button>
-            </form>
+            <div className="form-container">
+                {
+                    feedback !== "" ? <p className='feedback'>{feedback}</p> : 
+                    <form noValidate onSubmit={formik.handleSubmit} className='signup-form'>
+                        <div className="input-container">
+                            <label htmlFor="email">Email*</label>
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                placeholder="example@example.com"
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                                value={formik.values.email}
+                            />
+                            {formik.touched.email && formik.errors.email ? (
+                            <span className="error-message">{formik.errors.email}</span>
+                            ) : null}
+                        </div>
+                        <button
+                            type="submit"
+                            className="submit-button"
+                        >
+                            <IconArrowRight/>
+                            Subscribe
+                        </button>
+                    </form>
+                }
+            </div>
+            
         </SignUpBox>
     )
 }
@@ -126,6 +155,10 @@ const SignUpBox = styled.div`
     }
     .error-message {
         font-size: ${({theme})=> theme.text.xs};
+    }
+    .feedback {
+        color: ${({theme})=> theme.color.primary};
+        font-weight: 400;
     }
     @media screen and (max-width: 40rem){
         grid-column-gap: 0;
