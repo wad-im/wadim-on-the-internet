@@ -5,8 +5,11 @@ import Socials from "./socials";
 const Footer = ()=>{
     return (
         <StyledFooter>
-            <Socials/>
-            <p><a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a>   { new Date().getFullYear().toString()} </p>
+            <address>
+                <Socials/>
+                <p>hello@wadimbaslow.com</p>
+            </address>
+            <p className="licence"><a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a>,  { new Date().getFullYear().toString()} </p>
         </StyledFooter>
     )
 }
@@ -18,6 +21,14 @@ const StyledFooter = styled.footer`
     display: flex;
     align-items: center;
     p {margin-bottom: 0;}
+    address {
+        display: flex;
+        align-items: center;
+        margin-right: 1rem;
+        p {
+            font-style: normal;
+        }
+    }
     a {
         text-decoration: none;
         transition: color 0.2s ease;
@@ -25,4 +36,14 @@ const StyledFooter = styled.footer`
             color: ${({theme})=> theme.color.primary};
         }
      }
+    @media screen and (max-width: 37rem){
+        flex-direction: column;
+        align-items: flex-start;
+        address {
+            margin-bottom: 1rem;
+        }
+        .licence {
+            padding: 0.5rem;
+        }
+    }
 `
