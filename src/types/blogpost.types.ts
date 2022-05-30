@@ -14,5 +14,6 @@ export interface IBlogpostFrontmatter {
     description?: string,
     localHeroImage: any,
     remoteHeroImage: any,
-    heroImageAlt: string
+    heroImageAlt: string,
+    ogImage: string
 }

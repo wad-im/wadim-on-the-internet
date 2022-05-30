@@ -25,6 +25,7 @@ const Blogpost = ({data}: IBlogPostProps) => {
         title,
         description,
         date,
+        ogImage,
         slug
     } = frontmatter
 
@@ -33,7 +34,7 @@ const Blogpost = ({data}: IBlogPostProps) => {
     const publishishingDate = DateTime.fromISO(date).toLocaleString(DateTime.DATE_FULL)
 
     return (
-        <Layout title={title} description={description || excerpt} seoImage={remoteHeroImage.url} slug={slug}>
+        <Layout title={title} description={description || excerpt} seoImage={ogImage || remoteHeroImage.url} slug={slug}>
             <Container>
                 <div className="hero">
                     <GatsbyImage image={image} alt={heroImageAlt} className='hero-image'/>
@@ -69,6 +70,7 @@ export const query = graphql`
             description
             date
             heroImageAlt
+            ogImage
         }
         remoteHeroImage {
             url
